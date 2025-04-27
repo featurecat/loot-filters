@@ -4,6 +4,7 @@ name: header
 */
 meta { name = "bug queen"; }
 
+
 /*@ define:module:global_defaults
 ---
 name: Global defaults
@@ -243,7 +244,7 @@ type: number
 label: Hide items below this value
 group: Item Filters
 */
-#define VAR_GLOBAL_MINIMUM_VALUE 0
+#define VAR_GLOBAL_MINIMUM_VALUE 5000
 
 apply ((tradeable:true || name:CONST_GLOBAL_TRADEABLE_NON_TRADEABLE_ITEMS) && value:<VAR_GLOBAL_MINIMUM_VALUE) {
     hidden = true;
@@ -276,7 +277,7 @@ type: boolean
 label: Hide world spawn items
 group: Item Filters
 */
-#define VAR_GLOBAL_HIDE_SPAWN_ITEMS false
+#define VAR_GLOBAL_HIDE_SPAWN_ITEMS true
 
 apply (ownership:OWNERSHIP_NONE && VAR_GLOBAL_HIDE_SPAWN_ITEMS) {
     hidden = true;
@@ -311,7 +312,7 @@ type: boolean
 label: Show Value for Tradeable Items
 group: Style Settings
 */
-#define VAR_GLOBAL_SHOW_TRADEABLE_VALUE true
+#define VAR_GLOBAL_SHOW_TRADEABLE_VALUE false
 
 apply ((tradeable:true || name:CONST_GLOBAL_TRADEABLE_NON_TRADEABLE_ITEMS) && VAR_GLOBAL_SHOW_TRADEABLE_VALUE) {
     showValue = true;
@@ -372,6 +373,7 @@ group: Style Settings
 apply (name:VAR_GLOBAL_SHOW_ICONS_ITEMLIST) {
     icon = CurrentItem();
 }
+
 
 /*@ define:module:item_tiers
 ---
@@ -523,6 +525,7 @@ rule (VAR_VALUES_TIER_3_TERMINATE && ((value:>=VAR_VALUES_TIER_3_VALUE && value:
 rule (VAR_VALUES_TIER_4_TERMINATE && ((value:>=VAR_VALUES_TIER_4_VALUE) || name:VAR_VALUES_TIER_4_SHOW)) {}
 
 
+
 /*@ define:module:uniques
 ---
 name: Uniques
@@ -558,6 +561,7 @@ group: "Power User: Stop Filter Execution"
 #define VAR_UNIQUES_TERMINATE false
 
 rule (VAR_UNIQUES_TERMINATE && name:VAR_UNIQUES_LIST) {}
+
 
 
 /*@ define:module:currency
@@ -1370,6 +1374,7 @@ apply (name:"Warrior guild token" && quantity:<VAR_WARRIOR_GUILD_TOKEN_MIN_QUANT
 
 
 
+
 /*@ define:module:clue_scrolls
 ---
 name: Clue Scrolls
@@ -1478,6 +1483,7 @@ apply (name:"Clue scroll (elite)") {
 apply (name:"Clue scroll (master)") {
     VAR_CLUE_SCROLLS_MASTER_CUSTOMSTYLE 
 }
+
 
 
 
@@ -1625,6 +1631,7 @@ apply (name:VAR_ENSOULED_HEADS_HIDE) {
 apply (name:CONST_ENSOULED_HEAD_LIST && value:<VAR_REMAINS_MINIMUM_VALUE) {
     hidden = true;
 }
+
 
 
 
@@ -2146,6 +2153,7 @@ apply (area:CONST_COX_AREA && name:"Water-filled gourd vial") {
 
 
 
+
 /*@ define:module:theatre_of_blood
 ---
 name: Theatre of Blood
@@ -2179,6 +2187,7 @@ apply (name:"Dawnbringer") {
 apply (name:"Salve amulet (e)") {
     VAR_TOB_SALVE_CUSTOMSTYLE 
 }
+
 
 
 /*@ define:module:tombs_of_amascut
@@ -2522,6 +2531,7 @@ apply (area:CONST_TOA_AREA && name:"Smelling salts (*") {
 apply (area:CONST_TOA_AREA && name:"Tears of Elidinis (*") {
     VAR_TEARS_OF_ELIDINIS_CUSTOMSTYLE
 }
+
 
 
 /*@ define:module:bossing
@@ -3275,6 +3285,7 @@ apply (area:CONST_NEX_AREA && name:VAR_BOSSING_NEX_SUPPLY_SHOW) {
 
 
 
+
 /*@ define:module:slayer
 ---
 name: Slayer
@@ -3647,6 +3658,7 @@ apply (area:CONST_SLAYER_SMOKE_DEVILS_AREA && name:VAR_SLAYER_SMOKE_DEVIL_HERBS_
 #define CONST_SLAYER_BLOODVELDS_AREA [0000, 0000, 0, 0000, 0000, 0]
 
 
+
 /*@ define:module:monsters
 ---
 name: Monsters
@@ -3825,6 +3837,7 @@ apply (name:"Scorching bow") {
   VAR_MONSTERS_TORMENTED_DEMONS_SCORCHING_BOW_CUSTOMSTYLE
 }
 
+
 /*@ define:module:alchs
 ---
 name: Alchs
@@ -3859,6 +3872,7 @@ group: "Power User: Stop Filter Execution"
 #define VAR_ALCHS_TERMINATE false
 
 rule (VAR_ALCHS_TERMINATE && name:VAR_ALCHS_ITEM_LIST) {}
+
 
 
 /*@ define:module:ammo
@@ -4396,6 +4410,7 @@ group: Utilities
 apply ((name:CONST_AMMO_STANDARD_ARROWS_LIST || name:CONST_AMMO_BRUTAL_ARROWS_LIST || name:CONST_AMMO_SPECIAL_ARROWS_LIST || name:CONST_AMMO_DARTS_LIST || name:CONST_AMMO_JAVELINS_LIST || name:CONST_AMMO_BOLTS_LIST || name:CONST_AMMO_BOLTS_E_LIST || name:CONST_AMMO_DRAGON_BOLTS_E_LIST || name:CONST_AMMO_SPECIAL_BOLTS_LIST) && ownership:OWNERSHIP_SELF && quantity:==1 && VAR_AMMO_BACKPACK_REMINDER_SOUND) {
     sound = VAR_AMMO_BACKPACK_REMINDER_SOUND_ID;
 }
+
 
 /*@ define:module:runes
 ---
@@ -5000,6 +5015,7 @@ apply (name:"Lava rune" && quantity:>=VAR_LAVA_RUNE_MIN_QUANTITY && VAR_RUNES_SH
 }
 
 
+
 /*@ define:module:logs
 ---
 name: Logs
@@ -5369,6 +5385,7 @@ apply (name:"Blisterwood logs") {
 apply (name:"Blisterwood logs" && quantity:<VAR_BLISTERWOOD_LOGS_MIN_QUANTITY) {
     hidden = true;
 }
+
 
 
 
@@ -6115,6 +6132,7 @@ apply (name:"Raw karambwan") {
 
 
 
+
 /*@ define:module:ores
 ---
 name: Ores
@@ -6448,6 +6466,7 @@ apply (name:"lovakite ore") {
 }
 
 
+
 /*@ define:module:gems
 ---
 name: Gems
@@ -6706,6 +6725,7 @@ apply (name:["Uncut onyx",   "Onyx", ]) {
 apply (name:["Uncut onyx",   "Onyx", ] && quantity:<VAR_ONYX_MIN_QUANTITY) {
     hidden = true;
 }
+
 
 
 
@@ -7081,6 +7101,7 @@ apply (name:"'Perfect' gold bar") {
 apply (name:"'Perfect' gold bar" && quantity:<VAR_PERFECT_GOLD_BAR_MIN_QUANTITY) {
     hidden = true;
 }
+
 
 
 
@@ -7732,6 +7753,7 @@ apply (name:"*torstol" && noted:true && quantity:<VAR_HERBS_TORSTOL_NOTED_MIN_QU
 
 
 
+
 /*@ define:module:farming_seeds
 ---
 name: Farming seeds
@@ -7985,6 +8007,7 @@ apply (name:CONST_FARMING_SEEDS_ANIMA_LIST && value:<VAR_FARMING_SEEDS_MINIMUM_V
 
 
 
+
 /*@ define:module:herblore_secondaries
 ---
 name: Herblore secondaries
@@ -8078,6 +8101,7 @@ apply (name:VAR_SECONDARIES_HIDE) {
 apply (name:VAR_SECONDARIES_SHOW) {
     hidden = false;
 }
+
 
 
 /*@ define:module:potions
@@ -9021,6 +9045,7 @@ apply (name:"Extended super antifire(*") {
 
 
 
+
 /*@ define:module:food
 ---
 name: Food
@@ -9448,6 +9473,7 @@ apply (name:"Anglerfish") {
 apply (name:"Dark crab") {
     VAR_DARK_CRAB_CUSTOMSTYLE 
 }
+
 
 
 /*@ define:module:metal_equipment
@@ -10155,6 +10181,7 @@ apply (name:CONST_DRAGON_ARMOUR && name:VAR_METAL_EQUIPMENT_TIERS_HIDE) {
 
 
 
+
 /*@ define:module:gauntlet
 ---
 name: Gauntlet
@@ -10714,6 +10741,7 @@ apply (area:CONST_GAUNTLET_AREA && name:["* (perfected)", ]) {
 
 
 
+
 /*@ define:module:last_man_standing
 ---
 name: Last Man Standing
@@ -10961,6 +10989,7 @@ apply (area:CONST_LAST_MAN_STANDING_DESERT_ISLAND_AREA && name:VAR_LAST_MAN_STAN
 apply (area:CONST_LAST_MAN_STANDING_WILD_VARROCK_AREA && name:VAR_LAST_MAN_STANDING_MAGIC_ARMOUR_HIDE) {
     hidden = true;
 }
+
 
 
 /*@ define:module:rare_drop_table
@@ -11311,6 +11340,7 @@ apply (name:"Dragon spear" && quantity:==1 && name:VAR_RDT_SHOW) {
 apply (name:"Dragon spear" && quantity:==1 && name:VAR_RDT_HIDE) {
     hidden=true;
 }
+
 
 
 
